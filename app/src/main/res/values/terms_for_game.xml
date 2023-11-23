@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="terms_for_game">
+        <item>Акция</item>
+        <item>Актив</item>
+        <item>Акциз</item>
+        <item>Аллонж</item>
+        <item>Аваль</item>
+        <item>Арбитраж</item>
+        <item>Аванс</item>
+        <item>Аверс</item>
+        <item>Авизо</item>
+        <item>Авуар</item>
+        <item>Альткоин</item>
+        <item>Банкнота</item>
+        <item>Банкротство</item>
+        <item>Бартер</item>
+        <item>Бифляция</item>
+        <item>Биржа</item>
+        <item>БРИК</item>
+        <item>Брокер</item>
+        <item>Бюджет</item>
+        <item>Бенчмарк</item>
+        <item>Безработица</item>
+        <item>Бухгалтерия</item>
+    </string-array>
+</resources>

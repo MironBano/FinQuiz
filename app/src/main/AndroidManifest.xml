@@ -13,8 +13,10 @@
         android:theme="@style/Theme.FinQuiz"
         tools:targetApi="34">
         <activity
-            android:name=".GuideActivity">
-        </activity>
+            android:name=".ResultActivity"
+            android:exported="false" />
+        <activity android:name=".GameActivity" />
+        <activity android:name=".GuideActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
