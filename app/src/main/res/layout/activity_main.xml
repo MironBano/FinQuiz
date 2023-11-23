@@ -25,6 +25,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginStart="25dp"
         android:background="@drawable/guide_icon"
+        android:onClick="onClick"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
