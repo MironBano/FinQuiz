@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class GameActivity extends AppCompatActivity{
 
-    public static int count;
+    public static int count = 0;  //переменная для счета
     public static String answer;
     private Thread thread;
     TextView termText;
@@ -26,6 +26,8 @@ public class GameActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        count = 0;
 
         termText = findViewById(R.id.term);
         timeText = findViewById(R.id.time);
@@ -87,11 +89,13 @@ public class GameActivity extends AppCompatActivity{
     @Override
     protected void onStop() {
         super.onStop();
-        // Остановка фонового потока при уходе с Activity
+        // остановка фонового потока при уходе с Activity
         if (thread != null) {
             thread.interrupt();
             thread = null;
         }
+
+        // Удалить Toasts которые продолжают показываться !!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 
     public void startCountdown(){          // начало отсчета 30 сек
@@ -110,6 +114,7 @@ public class GameActivity extends AppCompatActivity{
                         });
                     }
                     Intent intent = new Intent(GameActivity.this, ResultActivity.class);
+                    intent.putExtra("Current count",count);
                     startActivity(intent); // переход на другую Activity
                     finish(); // закрытие текущей Activity
 

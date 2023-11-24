@@ -63,7 +63,6 @@
         android:text="Вернуться"
         android:textColor="@color/black"
         android:textSize="25sp"
-        android:onClick="OnClickReturn"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
