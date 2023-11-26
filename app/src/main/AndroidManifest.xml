@@ -13,6 +13,9 @@
         android:theme="@style/Theme.FinQuiz"
         tools:targetApi="34">
         <activity
+            android:name=".StatisticActivity"
+            android:exported="false" />
+        <activity
             android:name=".ResultActivity"
             android:exported="false" />
         <activity android:name=".GameActivity" />

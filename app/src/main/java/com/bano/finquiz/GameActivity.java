@@ -13,7 +13,8 @@ import java.util.Random;
 
 public class GameActivity extends AppCompatActivity{
 
-    public static int count = 0;  //переменная для счета
+    public static int count = 0;  //переменная для счета правильных ответов
+    public static int anticount = 0; //переменная для счета НЕправильных ответов
     public static String answer;
     private Thread thread;
     TextView termText;
@@ -28,6 +29,7 @@ public class GameActivity extends AppCompatActivity{
         setContentView(R.layout.activity_game);
 
         count = 0;
+        anticount = 0;
 
         termText = findViewById(R.id.term);
         timeText = findViewById(R.id.time);
@@ -37,9 +39,10 @@ public class GameActivity extends AppCompatActivity{
         def2Button = findViewById(R.id.definition2);
         def3Button = findViewById(R.id.definition3);
 
+        Toast answerWrongToast = Toast.makeText(GameActivity.this,"Неверно", Toast.LENGTH_SHORT);
+
         answer = generateQuize();
 
-        startCountdown();
 
         def1Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,12 +50,13 @@ public class GameActivity extends AppCompatActivity{
                 if(def1Button.getText() == answer) {
                     count += 1;
                     counterText.setText("Счет: " + count);
-                    answer = generateQuize();
                 }
                 else {
-                    Toast.makeText(GameActivity.this,"Неверно", Toast.LENGTH_SHORT).show();
-                    answer = generateQuize();
+                    anticount += 1;
+                    answerWrongToast.cancel();
+                    answerWrongToast.show();
                 }
+                answer = generateQuize();
             }
         });
         def2Button.setOnClickListener(new View.OnClickListener() {
@@ -61,12 +65,13 @@ public class GameActivity extends AppCompatActivity{
                 if(def2Button.getText() == answer) {
                     count += 1;
                     counterText.setText("Счет: " + count);
-                    answer = generateQuize();
                 }
                 else {
-                    Toast.makeText(GameActivity.this,"Неверно", Toast.LENGTH_SHORT).show();
-                    answer = generateQuize();
+                    anticount += 1;
+                    answerWrongToast.cancel();
+                    answerWrongToast.show();
                 }
+                answer = generateQuize();
             }
         });
         def3Button.setOnClickListener(new View.OnClickListener() {
@@ -75,14 +80,17 @@ public class GameActivity extends AppCompatActivity{
                 if(def3Button.getText() == answer) {
                     count += 1;
                     counterText.setText("Счет: " + count);
-                    answer = generateQuize();
                 }
                 else {
-                    Toast.makeText(GameActivity.this,"Неверно", Toast.LENGTH_SHORT).show();
-                    answer = generateQuize();
+                    anticount += 1;
+                    answerWrongToast.cancel();
+                    answerWrongToast.show();
                 }
+                answer = generateQuize();
             }
         });
+
+        startCountdown();
 
     }
 
@@ -94,8 +102,6 @@ public class GameActivity extends AppCompatActivity{
             thread.interrupt();
             thread = null;
         }
-
-        // Удалить Toasts которые продолжают показываться !!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 
     public void startCountdown(){          // начало отсчета 30 сек
@@ -115,6 +121,7 @@ public class GameActivity extends AppCompatActivity{
                     }
                     Intent intent = new Intent(GameActivity.this, ResultActivity.class);
                     intent.putExtra("Current count",count);
+                    intent.putExtra("Current anticount",anticount);
                     startActivity(intent); // переход на другую Activity
                     finish(); // закрытие текущей Activity
 
