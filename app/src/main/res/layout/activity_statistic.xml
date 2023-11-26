@@ -15,19 +15,24 @@
         android:layout_marginTop="70dp"
         android:text="RECORD: "
         android:textColor="@color/white"
-        android:textSize="25sp"
+        android:textSize="20sp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
 
-        app:layout_constraintStart_toStartOf="@+id/winsBest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/winsBest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WIN PERCENT BEST: "
-        android:textSize="25sp"
+        android:text="Лучший процент: \n"
+        android:textSize="20sp"
         android:textColor="@color/white"
         android:layout_marginTop="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,29 +51,36 @@
             app:layout_constraintTop_toBottomOf="@+id/total" />
     -->
 
-        <TextView
-            android:id="@+id/total"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="TOTALANSWERS: "
-            android:textColor="@color/white"
-            android:textSize="25sp"
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="TOTALANSWERS: "
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
 
-            app:layout_constraintStart_toStartOf="@+id/winsBest"
-            app:layout_constraintTop_toBottomOf="@+id/winsBest" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/winsBest" />
 
-        <Button
-            android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Вернуться"
-            android:textColor="@color/black"
-            android:textSize="25sp"
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Вернуться"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
 
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/total" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>

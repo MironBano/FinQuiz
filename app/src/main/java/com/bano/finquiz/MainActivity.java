@@ -29,4 +29,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void onClick3(View view) {
+        Intent i = new Intent(MainActivity.this, StatisticActivity.class);
+        startActivity(i);
+    }
+
 }

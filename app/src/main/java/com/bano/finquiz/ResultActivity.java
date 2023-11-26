@@ -19,6 +19,7 @@ public class ResultActivity extends AppCompatActivity {
     Database database;
     SQLiteDatabase db;
     int currentCount;
+    double percent;
     Cursor cursor;
     TextView record;
     TextView count;
@@ -34,6 +35,7 @@ public class ResultActivity extends AppCompatActivity {
         Bundle arg = getIntent().getExtras();
         int currentCount = arg.getInt("Current count");
         int currentAnticount = arg.getInt("Current anticount");
+        percent = ((double) currentCount / (currentCount+currentAnticount))*100;
 
         record = findViewById(R.id.recordText);
         count = findViewById(R.id.countText);
@@ -64,12 +66,17 @@ public class ResultActivity extends AppCompatActivity {
                     int currentTotal = cursor.getInt(cursor.getColumnIndex(Database.COLUMN_TOTAL));
 
                     record.setText("Рекорд: " + currentRecord);
+
                     // Обновление значений в базе данных с использованием update
                     ContentValues cv = new ContentValues();
-                    if(currentRecord < currentCount){
+                    if((currentRecord < currentCount) && !checkForAbuse(percent)){
                         cv.put(Database.COLUMN_RECORD, currentCount);
-                        db.update(Database.TABLE, cv, Database.COLUMN_ID + "=" + id, null);
                     }
+                    if(currentPercent < ((double) currentCount / (currentCount+currentAnticount))*100){
+                        cv.put(Database.COLUMN_PERCENT, ((double) currentCount / (currentCount+currentAnticount))*100);
+                    }
+                    cv.put(Database.COLUMN_TOTAL, currentTotal + currentCount);
+                    db.update(Database.TABLE, cv, Database.COLUMN_ID + "=" + id, null);
 
                 } while (cursor.moveToNext());
             }
@@ -92,16 +99,16 @@ public class ResultActivity extends AppCompatActivity {
             wins.setText("Процент правильных ответов: " + 0 + " %");
         }
         else {
-            double percent = ((double) currentCount / (currentCount+currentAnticount))*100;
+            percent = ((double) currentCount / (currentCount+currentAnticount))*100;
             DecimalFormat df = new DecimalFormat("#.#");
 
             wins.setText("Процент правильных ответов: \n" +  df.format(percent) + "%");
-            warning.setText(checkForAbuse(percent) ? "При проценте меньше 33.3 рекорд не обновится!" : "");
+            warning.setText(checkForAbuse(percent) ? "При проценте меньше 40 рекорд не обновится!" : "");
         }
     }
 
     public boolean checkForAbuse(double percent){
-        return (percent < 33.3) ? true : false;
+        return (percent < 40) ? true : false;
     }
 
 }
