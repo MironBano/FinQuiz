@@ -82,7 +82,6 @@ public class ResultActivity extends AppCompatActivity {
             }
             cursor.close();
         }
-        // Закрытие базы данных
         db.close();
     }
 
