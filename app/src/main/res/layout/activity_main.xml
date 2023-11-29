@@ -39,7 +39,22 @@
         android:onClick="onClick3"
         android:text="Статистика"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="25dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/rules"
+        app:layout_constraintEnd_toEndOf="@+id/start_game"
+        app:layout_constraintStart_toStartOf="@+id/start_game" />
+
+    <Button
+        android:id="@+id/rules"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:onClick="onClick4"
+        android:text="Правила"
+        android:textColor="@color/black"
+        android:textSize="25dp"
 
         app:layout_constraintBottom_toTopOf="@+id/start_game"
         app:layout_constraintEnd_toEndOf="@+id/start_game"
@@ -53,7 +68,7 @@
         android:onClick="onClick2"
         android:text="Играть!"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="25dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -34,4 +34,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void onClick4(View view) {
+        Intent i = new Intent(MainActivity.this, RulesActivity.class);
+        startActivity(i);
+    }
+
 }
