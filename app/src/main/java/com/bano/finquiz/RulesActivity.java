@@ -17,8 +17,7 @@ public class RulesActivity extends AppCompatActivity {
     }
 
     public void OnClickReturn(View view) {
-        Intent i = new Intent(RulesActivity.this, MainActivity.class);
-        startActivity(i);
+        onBackPressed();
     }
 
 }

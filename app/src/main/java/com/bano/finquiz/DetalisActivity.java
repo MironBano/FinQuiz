@@ -18,7 +18,7 @@ public class DetalisActivity extends AppCompatActivity {
         returnBut.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                startActivity(new Intent(DetalisActivity.this, MainActivity.class));
+                onBackPressed();
             }
         });
     }

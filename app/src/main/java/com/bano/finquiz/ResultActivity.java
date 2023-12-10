@@ -28,6 +28,13 @@ public class ResultActivity extends AppCompatActivity {
     Button returnBut;
 
     @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ResultActivity.this, MainActivity.class));
+
+    }
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
