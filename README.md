@@ -4,10 +4,7 @@
 При правильном ответе счёт игрока увеличивается на 1.
 Рекорд обновляется только при проценте правильных ответов больше 40%.
 
-
-
-![](https://github.com/MironBano/FinQuiz/blob/main/Example.gif)
-
+<img src="https://github.com/MironBano/FinQuiz/blob/main/Example.gif" width="250" height="550" />
 
 В приложении используется многопоточность (GameActivity) и SQLite.
 
