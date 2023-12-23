@@ -6,5 +6,5 @@
 
 <img src="https://github.com/MironBano/FinQuiz/blob/main/Example.gif" width="250" height="550" />
 
-В приложении используется многопоточность (GameActivity) и SQLite.
+В приложении используется многопоточность (GameActivity) и SQLite для хранения статистики.
 
