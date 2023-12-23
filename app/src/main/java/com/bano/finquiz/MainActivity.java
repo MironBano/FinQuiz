@@ -3,6 +3,7 @@ package com.bano.finquiz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.audiofx.Equalizer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,9 +12,60 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton guidBut;
-
     private static long back_pressed;
+    ImageButton guideButton;
+    ImageButton settingsButton;
+    Button statisticButton;
+    Button rulesButton;
+    Button gameButton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        guideButton = findViewById(R.id.guide);
+        settingsButton = findViewById(R.id.settings);
+        statisticButton = findViewById(R.id.statistics);
+        rulesButton = findViewById(R.id.rules);
+        gameButton = findViewById(R.id.start_game);
+
+        guideButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(MainActivity.this, GuideActivity.class));
+            }
+        });
+
+        settingsButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(MainActivity.this, DetalisActivity.class));
+            }
+        });
+
+        statisticButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(MainActivity.this, StatisticActivity.class));
+            }
+        });
+
+        rulesButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(MainActivity.this, RulesActivity.class));
+            }
+        });
+
+        gameButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(MainActivity.this, GameActivity.class));
+            }
+        });
+
+    }
 
     @Override
     public void onBackPressed() {
@@ -25,36 +77,5 @@ public class MainActivity extends AppCompatActivity {
         back_pressed = System.currentTimeMillis();
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-    }
-
-    public void onClick1(View view) {
-        Intent i = new Intent(MainActivity.this, GuideActivity.class);
-        startActivity(i);
-    }
-
-    public void onClick2(View view) {
-        Intent i = new Intent(MainActivity.this, GameActivity.class);
-        startActivity(i);
-    }
-
-    public void onClick3(View view) {
-        Intent i = new Intent(MainActivity.this, StatisticActivity.class);
-        startActivity(i);
-    }
-
-    public void onClick4(View view) {
-        Intent i = new Intent(MainActivity.this, RulesActivity.class);
-        startActivity(i);
-    }
-
-    public void onClick5(View view) {
-        Intent i = new Intent(MainActivity.this, DetalisActivity.class);
-        startActivity(i);
-    }
 
 }

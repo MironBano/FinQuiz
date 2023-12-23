@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:divider="@color/yellow"
+    >
+    <PreferenceCategory
+        android:title=" ">
+    <ListPreference
+        android:key="test_style"
+        android:title="Время на Раунд"
+        android:summary="Нажмите, чтобы выбрать время на раунд"
+        android:defaultValue="1"
+        android:entries="@array/text_style"
+        android:entryValues="@array/text_style"
+        android:dialogTitle="Выберите время раунда" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title=" "
+        >
+    <SwitchPreference
+        android:key="music"
+        android:summaryOff="Включить музыку"
+        android:summaryOn="Выключить музыку"
+        android:switchTextOff=""
+        android:switchTextOn="" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

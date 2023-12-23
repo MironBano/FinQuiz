@@ -10,8 +10,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FinQuiz"
+        android:theme="@style/Base.Theme.FinQuiz"
         tools:targetApi="34">
+        <activity
+            android:name=".SettingsActivity"
+            android:theme="@style/Theme.FinQuiz.Preferences"
+            android:exported="false" />
         <activity
             android:name=".DetalisActivity"
             android:exported="false" />
@@ -24,8 +28,13 @@
         <activity
             android:name=".ResultActivity"
             android:exported="false" />
-        <activity android:name=".GameActivity" />
-        <activity android:name=".GuideActivity" />
+        <activity
+            android:name=".GameActivity"
+            />
+        <activity
+            android:name=".GuideActivity"
+            android:theme="@style/Theme.FinQuiz"
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true">

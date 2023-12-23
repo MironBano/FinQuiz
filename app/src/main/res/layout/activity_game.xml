@@ -33,43 +33,67 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/count" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/definition1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="def1 - yyyyyyyyy yyyyyyyyyy yyyyyyyyyyyyyyyyyyy"
+        android:minHeight="80dp"
+        android:text="def1 - yyyyyyy"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:gravity="fill_horizontal"
+
+        android:background="@drawable/standart_button"
+
+        android:padding="10dp"
         android:layout_marginTop="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/term" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/definition2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="80dp"
         android:text="def2 - yyyyyyyyy yyyyyyyyyyyyyyyyyyyyyyyy yyyyyyyyyyyyyyyyyyy"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:gravity="fill_horizontal"
+
+        android:background="@drawable/standart_button"
+
+        android:padding="10dp"
         android:layout_marginTop="15dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/definition1" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/definition3"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="80dp"
         android:text="def3 - yyyyyyyyy yyyyyyyyyy yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:gravity="fill_horizontal"
+
+        android:background="@drawable/standart_button"
+
+        android:padding="10dp"
         android:layout_marginTop="15dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

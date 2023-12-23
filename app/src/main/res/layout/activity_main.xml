@@ -14,7 +14,6 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/details_icon"
-        android:onClick="onClick5"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,50 +25,58 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/guide_icon"
-        android:onClick="onClick1"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/statistics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="25dp"
-        android:onClick="onClick3"
         android:text="Статистика"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="25dp"
+
+        android:padding="10dp"
+        android:background="@drawable/standart_button"
 
         app:layout_constraintBottom_toTopOf="@+id/rules"
         app:layout_constraintEnd_toEndOf="@+id/start_game"
         app:layout_constraintStart_toStartOf="@+id/start_game" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/rules"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="25dp"
-        android:onClick="onClick4"
         android:text="Правила"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="25dp"
+
+        android:padding="10dp"
+        android:background="@drawable/standart_button"
 
         app:layout_constraintBottom_toTopOf="@+id/start_game"
         app:layout_constraintEnd_toEndOf="@+id/start_game"
         app:layout_constraintStart_toStartOf="@+id/start_game" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/start_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
-        android:onClick="onClick2"
         android:text="Играть!"
+        android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="25dp"
+
+        android:padding="10dp"
+        android:background="@drawable/standart_button"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
