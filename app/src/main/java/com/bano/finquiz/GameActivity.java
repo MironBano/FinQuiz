@@ -1,7 +1,5 @@
 package com.bano.finquiz;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,12 +7,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Random;
+
+
 
 public class GameActivity extends AppCompatActivity{
 
-    public static int count = 0;  //переменная для счета правильных ответов
-    public static int anticount = 0; //переменная для счета НЕправильных ответов
+
+    public static int count = 0;
+    public static int anticount = 0;
     public static String answer;
     private Thread thread;
     TextView termText;
@@ -39,10 +42,11 @@ public class GameActivity extends AppCompatActivity{
         def2Button = findViewById(R.id.definition2);
         def3Button = findViewById(R.id.definition3);
 
+
+
         Toast answerWrongToast = Toast.makeText(GameActivity.this,"Неверно", Toast.LENGTH_SHORT);
 
         answer = generateQuize();
-
 
         def1Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +63,7 @@ public class GameActivity extends AppCompatActivity{
                 answer = generateQuize();
             }
         });
+
         def2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +79,7 @@ public class GameActivity extends AppCompatActivity{
                 answer = generateQuize();
             }
         });
+
         def3Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,20 +103,19 @@ public class GameActivity extends AppCompatActivity{
     @Override
     protected void onStop() {
         super.onStop();
-        // остановка фонового потока при уходе с Activity
         if (thread != null) {
             thread.interrupt();
             thread = null;
         }
     }
 
-    public void startCountdown(){          // начало отсчета 30 сек
+    public void startCountdown(){
         thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     for(int i = 0; i <30; i++) {
-                        Thread.sleep(1000); // отсчет 1 секундa
+                        Thread.sleep(1000);
                         int finalI = 30 - i;
                         runOnUiThread(new Runnable() {
                             @Override
@@ -122,8 +127,8 @@ public class GameActivity extends AppCompatActivity{
                     Intent intent = new Intent(GameActivity.this, ResultActivity.class);
                     intent.putExtra("Current count",count);
                     intent.putExtra("Current anticount",anticount);
-                    startActivity(intent); // переход на другую Activity
-                    finish(); // закрытие текущей Activity
+                    startActivity(intent);
+                    finish();
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -138,13 +143,13 @@ public class GameActivity extends AppCompatActivity{
         String[] defs = getResources().getStringArray(R.array.def_for_game);
 
         Random random = new Random();
-        int randomTermIndex = random.nextInt(terms.length);  // получение случайного индекса термина
+        int randomTermIndex = random.nextInt(terms.length);
 
         termText.setText(terms[randomTermIndex]);
 
         int numberOfUsedButton;
         String buttonInside;
-        int randomButtonIndex = random.nextInt(3);    // установка правильного ответа в случаную кнопку
+        int randomButtonIndex = random.nextInt(3);
         switch (randomButtonIndex){
             case 0:{
                 def1Button.setText(defs[randomTermIndex]);
@@ -168,7 +173,7 @@ public class GameActivity extends AppCompatActivity{
                 throw new IllegalStateException("Unexpected value: " + randomButtonIndex);
         }
 
-        for(int j = 1; j <= 3; j++){                        // установка остальных кнопок
+        for(int j = 1; j <= 3; j++){
             if(j == numberOfUsedButton) continue;
             switch (j){
                 case 1:{

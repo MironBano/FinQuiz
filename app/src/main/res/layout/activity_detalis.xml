@@ -18,29 +18,47 @@
         android:textColor="@color/white"
         android:textSize="20sp"
 
-        app:layout_constraintBottom_toTopOf="@+id/returnBut"
+        app:layout_constraintBottom_toTopOf="@id/goBackView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/returnBut"
+    <TextView
+        android:id="@+id/linkTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:text="@string/githubLinkText"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+
+        app:layout_constraintTop_toBottomOf="@id/textView" />
+
+    <TextView
+        android:id="@+id/linkText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:text=""
+        android:textColor="@color/linkblue"
+        android:textSize="20sp"
+
+        app:layout_constraintTop_toBottomOf="@+id/linkTextView" />
+
+
+    <include
+        android:id="@+id/goBackView"
+        layout="@layout/go_back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Вернуться"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:layout_marginBottom="70dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:onClick="OnClickReturn"
-
-        android:padding="10dp"
-        android:background="@drawable/standart_button"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

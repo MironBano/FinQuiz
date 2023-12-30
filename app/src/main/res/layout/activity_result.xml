@@ -11,7 +11,7 @@
         android:id="@+id/recordText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Рекорд: "
+        android:text="@string/recordText"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:layout_marginTop="90dp"
@@ -26,7 +26,7 @@
         android:id="@+id/countText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Текущий счет: "
+        android:text="@string/resultCount"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:layout_marginTop="25dp"
@@ -41,7 +41,7 @@
         android:id="@+id/winsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Процент правильных ответов: \n"
+        android:text="@string/currentWinsPercent"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:layout_marginTop="25dp"
@@ -66,23 +66,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/winsText"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/returnButton"
+    <include
+        android:id="@+id/goBackView"
+        layout="@layout/go_back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Вернуться"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:layout_marginBottom="70dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-
-        android:padding="10dp"
-        android:background="@drawable/standart_button"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

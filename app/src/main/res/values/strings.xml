@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">FinQuiz</string>
-    <string name="rules">По нажатию кнопки \"Играть!\" в главном меню, начинается раунд, игроку дается 30 секунд на раунд.\n\nЗадачи игрока - выбрать одно правильное определение термина из трех предложенных.\n\nПри правильном ответе счет игрока увеличивается на 1.\n\nРекорд игрока обновляется только в случае, когда процент верных ответов был больше 40%.</string>
+    <string name="rulesText">По нажатию кнопки \"Играть!\" в главном меню, начинается раунд, игроку дается 30 секунд на раунд.\n\nЗадачи игрока - выбрать одно правильное определение термина из трех предложенных.\n\nПри правильном ответе счет игрока увеличивается на 1.\n\nРекорд игрока обновляется только в случае, когда процент верных ответов был больше 40%.</string>
     <string name="details">Разработчик - Рыбак Мирон Юрьевич\n\nСпособы связи:\nПочта: rybak.m.yu@gmail.com\nTG: @Mirongus\n\nВерсия приложения: 1.0</string>
+    <string name="recordText">Рекорд:</string>
+    <string name="bestPercent">Лучший процент: \n</string>
+    <string name="AnswersAmount">Всего верных ответов:</string>
+    <string name="statReset">Сбросить статистику</string>
+    <string name="goBack">Вернуться</string>
+    <string name="startGame">Играть!</string>
+    <string name="rules">Правила</string>
+    <string name="statistics">Статистика</string>
+    <string name="gameCount">Счет:</string>
+    <string name="tempTextForButtons">text of definition</string>
+    <string name="timer">Starting!</string>
+    <string name="resultCount">Текущий счет:</string>
+    <string name="currentWinsPercent">Процент правильных ответов: \n</string>
+    <string name="githubLinkText">Исходный код на GitHub:</string>
 </resources>

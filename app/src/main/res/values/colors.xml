@@ -3,5 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FFF066</color>
+    <color name="linkblue">#3366BB</color>
+
 
 </resources>

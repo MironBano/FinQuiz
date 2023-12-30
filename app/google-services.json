@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "757374983131",
+    "project_id": "finquiz-b97fe",
+    "storage_bucket": "finquiz-b97fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757374983131:android:24cb95f3fe7096b15125fe",
+        "android_client_info": {
+          "package_name": "com.bano.finquiz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsTPZwm3qZ5sDzntg-EjsmDilbLJs-DEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

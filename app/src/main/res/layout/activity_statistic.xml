@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:text="Рекорд: "
+        android:text="@string/recordText"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:layout_marginStart="25dp"
@@ -27,7 +27,7 @@
         android:id="@+id/winsBest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Лучший процент: \n"
+        android:text="@string/bestPercent"
         android:textSize="20sp"
         android:textColor="@color/white"
         android:layout_marginTop="40dp"
@@ -38,25 +38,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/record" />
 
-    <!--     <TextView
-            android:id="@+id/winsTotal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="WIN PERCENT TOTAL: "
-            android:textColor="@color/white"
-            android:textSize="25sp"
-
-            app:layout_constraintStart_toStartOf="@+id/total"
-            app:layout_constraintTop_toBottomOf="@+id/total" />
-    -->
-
     <TextView
         android:id="@+id/total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Всего верных ответов: "
+        android:text="@string/AnswersAmount"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:layout_marginStart="25dp"
@@ -70,40 +57,31 @@
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Сбросить статистику"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="20sp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-
-        android:padding="10dp"
         android:background="@drawable/standart_button"
+        android:padding="10dp"
+        android:text="@string/statReset"
+        android:textAllCaps="false"
 
-        app:layout_constraintBottom_toTopOf="@id/backButton"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/goBackView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/total" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/backButton"
+    <include
+        android:id="@+id/goBackView"
+        layout="@layout/go_back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Вернуться"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="50dp"
-
-        android:padding="10dp"
-        android:background="@drawable/standart_button"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deleteButton" />
+        />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

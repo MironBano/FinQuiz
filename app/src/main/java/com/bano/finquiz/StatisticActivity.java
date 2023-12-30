@@ -22,8 +22,9 @@ public class StatisticActivity extends AppCompatActivity {
     TextView record;
     TextView wins;
     TextView total;
-    Button back;
     Button delete;
+    View goBackView;
+    Button goBackButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +33,13 @@ public class StatisticActivity extends AppCompatActivity {
         record = findViewById(R.id.record);
         wins = findViewById(R.id.winsBest);
         total = findViewById(R.id.total);
-        back = findViewById(R.id.backButton);
         delete = findViewById(R.id.deleteButton);
+        goBackView = findViewById(R.id.goBackView);
+        goBackButton = goBackView.findViewById(R.id.goBackButton);
 
         Toast deleteStatToast = Toast.makeText(StatisticActivity.this,"Статистика сброшена", Toast.LENGTH_LONG);
 
-        back.setOnClickListener(new View.OnClickListener(){
+        goBackButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 onBackPressed();
@@ -50,9 +52,6 @@ public class StatisticActivity extends AppCompatActivity {
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
-                    int id = cursor.getInt(cursor.getColumnIndex(Database.COLUMN_ID));
-
-                    // Получение текущих значений из базы данных
                     int currentRecord = cursor.getInt(cursor.getColumnIndex(Database.COLUMN_RECORD));
                     double currentPercent = cursor.getDouble(cursor.getColumnIndex(Database.COLUMN_PERCENT));
                     int currentTotal = cursor.getInt(cursor.getColumnIndex(Database.COLUMN_TOTAL));
@@ -61,8 +60,6 @@ public class StatisticActivity extends AppCompatActivity {
                     DecimalFormat df = new DecimalFormat("#.#");
                     wins.setText("Лучший процент: " + df.format(currentPercent) + "%");
                     total.setText("Всего верных ответов: " + currentTotal);
-
-
 
                 } while (cursor.moveToNext());
             }
@@ -84,7 +81,6 @@ public class StatisticActivity extends AppCompatActivity {
                             double currentPercent = cursor.getDouble(cursor.getColumnIndex(Database.COLUMN_PERCENT));
                             int currentTotal = cursor.getInt(cursor.getColumnIndex(Database.COLUMN_TOTAL));
 
-                            // Обновление значений в базе данных с использованием update
                             ContentValues cv = new ContentValues();
                             cv.put(Database.COLUMN_RECORD, 0);
                             cv.put(Database.COLUMN_PERCENT, 0);

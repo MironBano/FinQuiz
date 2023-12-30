@@ -31,10 +31,7 @@ public class GuideActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id)
             {
-                // по позиции получаем выбранный элемент
                 String selectedItem = terms[position];
-
-
             }
         });
 

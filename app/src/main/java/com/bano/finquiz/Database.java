@@ -5,9 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class Database extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "app.db"; // название бд
-    private static final int SCHEMA = 1; // версия
-    static final String TABLE = "statistic"; // название таблицы
+    private static final String DATABASE_NAME = "app.db";
+    private static final int SCHEMA = 1;
+    static final String TABLE = "statistic";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_RECORD = "record";
     public static final String COLUMN_PERCENT = "percent";
@@ -22,8 +22,6 @@ public class Database extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE statistic (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_RECORD + " INTEGER, " + COLUMN_PERCENT + " REAL, " + COLUMN_TOTAL + " INTEGER);");
 
-
-        // добавление начальных данных
         db.execSQL("INSERT INTO "+ TABLE +" (" + COLUMN_RECORD + ", " + COLUMN_PERCENT + ", " + COLUMN_TOTAL + ") VALUES (0, 0, 0);");
     }
     @Override

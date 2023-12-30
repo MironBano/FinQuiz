@@ -1,23 +1,30 @@
 package com.bano.finquiz;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 public class RulesActivity extends AppCompatActivity {
+    View goBackView;
+    Button goBackButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rules);
 
-    }
+        goBackView = findViewById(R.id.goBackView);
 
-    public void OnClickReturn(View view) {
-        onBackPressed();
-    }
+        goBackButton = goBackView.findViewById(R.id.goBackButton);
+        goBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
+    }
 }
