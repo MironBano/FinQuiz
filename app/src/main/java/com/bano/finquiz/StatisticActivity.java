@@ -37,7 +37,10 @@ public class StatisticActivity extends AppCompatActivity {
         goBackView = findViewById(R.id.goBackView);
         goBackButton = goBackView.findViewById(R.id.goBackButton);
 
-        Toast deleteStatToast = Toast.makeText(StatisticActivity.this,"Статистика сброшена", Toast.LENGTH_LONG);
+        Toast deleteStatToast = Toast.makeText(StatisticActivity.this,"Статистика сброшена", Toast.LENGTH_SHORT);
+
+        Intent updateIntent = new Intent(StatisticActivity.this, StatisticActivity.class);
+        updateIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         goBackButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -77,9 +80,6 @@ public class StatisticActivity extends AppCompatActivity {
                     if (cursor.moveToFirst()) {
                         do {
                             int id = cursor.getInt(cursor.getColumnIndex(Database.COLUMN_ID));
-                            int currentRecord = cursor.getInt(cursor.getColumnIndex(Database.COLUMN_RECORD));
-                            double currentPercent = cursor.getDouble(cursor.getColumnIndex(Database.COLUMN_PERCENT));
-                            int currentTotal = cursor.getInt(cursor.getColumnIndex(Database.COLUMN_TOTAL));
 
                             ContentValues cv = new ContentValues();
                             cv.put(Database.COLUMN_RECORD, 0);
@@ -95,6 +95,7 @@ public class StatisticActivity extends AppCompatActivity {
                     cursor.close();
                 }
                 db.close();
+                startActivity(updateIntent);
             }
         });
     }
