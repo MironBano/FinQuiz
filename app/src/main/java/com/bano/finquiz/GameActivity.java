@@ -1,6 +1,8 @@
 package com.bano.finquiz;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,14 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Random;
 
-
-
 public class GameActivity extends AppCompatActivity{
-
-
     public static int count = 0;
     public static int anticount = 0;
     public static String answer;
@@ -26,6 +23,8 @@ public class GameActivity extends AppCompatActivity{
     Button def3Button;
     TextView timeText;
     TextView counterText;
+    GlossaryDB glossaryDB = new GlossaryDB(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +40,6 @@ public class GameActivity extends AppCompatActivity{
         def1Button = findViewById(R.id.definition1);
         def2Button = findViewById(R.id.definition2);
         def3Button = findViewById(R.id.definition3);
-
-
 
         Toast answerWrongToast = Toast.makeText(GameActivity.this,"Неверно", Toast.LENGTH_SHORT);
 
@@ -116,11 +113,11 @@ public class GameActivity extends AppCompatActivity{
                 try {
                     for(int i = 0; i <30; i++) {
                         Thread.sleep(1000);
-                        int finalI = 30 - i;
+                        int timeLeft = 30 - i;
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                timeText.setText(finalI + " s");
+                                timeText.setText(timeLeft + " s");
                             }
                         });
                     }
@@ -139,8 +136,34 @@ public class GameActivity extends AppCompatActivity{
     }
 
     public String generateQuize(){
-        String[] terms = getResources().getStringArray(R.array.terms_for_game);
-        String[] defs = getResources().getStringArray(R.array.def_for_game);
+        SQLiteDatabase db = glossaryDB.getReadableDatabase();
+
+        String[] terms = new String[28];
+        for(int i = 0; i <28; i++){
+            terms[i] = "";
+        }
+
+        String[] defs = new String[28];
+        for(int i = 0; i <28; i++){
+            defs[i] = "";
+        }
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + GlossaryDB.TABLE_NAME, null);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    int id = cursor.getInt(cursor.getColumnIndex(GlossaryDB.COLUMN_ID));
+                    String term = cursor.getString(cursor.getColumnIndex(GlossaryDB.KEY_TERM));
+                    String definition = cursor.getString(cursor.getColumnIndex(GlossaryDB.KEY_DEFINITION));
+
+                    terms[id - 1] = term;
+                    defs[id - 1] = definition;
+
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+        }
+        db.close();
 
         Random random = new Random();
         int randomTermIndex = random.nextInt(terms.length);
