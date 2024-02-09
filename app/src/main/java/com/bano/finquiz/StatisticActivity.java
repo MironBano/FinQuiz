@@ -19,12 +19,9 @@ import java.text.DecimalFormat;
 public class StatisticActivity extends AppCompatActivity {
     Database database;
     SQLiteDatabase db;
-    TextView record;
-    TextView wins;
-    TextView total;
-    Button delete;
+    TextView record, wins, total;
+    Button delete, goBackButton;
     View goBackView;
-    Button goBackButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -16,7 +16,6 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 public class DetalisActivity extends AppCompatActivity {
     View goBackView;
     Button goBackButton;
-
     TextView dynamicLinkTextView;
     String dynamicLinkUrl = "https://github.com/MironBano";
 

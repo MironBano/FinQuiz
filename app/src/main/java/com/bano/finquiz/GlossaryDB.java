@@ -3,8 +3,6 @@ package com.bano.finquiz;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.content.ContentValues;
-import android.database.Cursor;
 
 public class GlossaryDB extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;

@@ -19,10 +19,7 @@ public class ResultActivity extends AppCompatActivity {
     SQLiteDatabase db;
     double percent;
     Cursor cursor;
-    TextView record;
-    TextView count;
-    TextView wins;
-    TextView warning;
+    TextView record, count, wins, warning;
     Button goBackButton;
     View goBackView;
 

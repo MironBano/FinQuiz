@@ -4,6 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FFF066</color>
     <color name="linkblue">#3366BB</color>
+    <color name="lightRed">#F84242</color>
+    <color name="lightGreen">#9DF842</color>
 
 
 </resources>

@@ -13,11 +13,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private static long back_pressed;
-    ImageButton guideButton;
-    ImageButton settingsButton;
-    Button statisticButton;
-    Button rulesButton;
-    Button gameButton;
+    ImageButton guideButton, settingsButton;
+    Button statisticButton, rulesButton, gameButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

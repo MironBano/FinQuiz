@@ -3,6 +3,7 @@ package com.bano.finquiz;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,16 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity{
-    public static int count = 0;
-    public static int anticount = 0;
+    public static int count,anticount = 0;
     public static String answer;
     private Thread thread;
-    TextView termText;
-    Button def1Button;
-    Button def2Button;
-    Button def3Button;
-    TextView timeText;
-    TextView counterText;
+    TextView termText,timeText,counterText;
+    Button def1Button,def2Button,def3Button;
     GlossaryDB glossaryDB = new GlossaryDB(this);
 
     @Override
@@ -51,9 +47,11 @@ public class GameActivity extends AppCompatActivity{
                 if(def1Button.getText() == answer) {
                     count += 1;
                     counterText.setText("Счет: " + count);
+                    playRightAnswerSoung();
                 }
                 else {
                     anticount += 1;
+                    playWrongAnswerSoung();
                     answerWrongToast.cancel();
                     answerWrongToast.show();
                 }
@@ -67,9 +65,11 @@ public class GameActivity extends AppCompatActivity{
                 if(def2Button.getText() == answer) {
                     count += 1;
                     counterText.setText("Счет: " + count);
+                    playRightAnswerSoung();
                 }
                 else {
                     anticount += 1;
+                    playWrongAnswerSoung();
                     answerWrongToast.cancel();
                     answerWrongToast.show();
                 }
@@ -83,9 +83,11 @@ public class GameActivity extends AppCompatActivity{
                 if(def3Button.getText() == answer) {
                     count += 1;
                     counterText.setText("Счет: " + count);
+                    playRightAnswerSoung();
                 }
                 else {
                     anticount += 1;
+                    playWrongAnswerSoung();
                     answerWrongToast.cancel();
                     answerWrongToast.show();
                 }
@@ -171,25 +173,21 @@ public class GameActivity extends AppCompatActivity{
         termText.setText(terms[randomTermIndex]);
 
         int numberOfUsedButton;
-        String buttonInside;
         int randomButtonIndex = random.nextInt(3);
         switch (randomButtonIndex){
             case 0:{
                 def1Button.setText(defs[randomTermIndex]);
                 numberOfUsedButton = 1;
-                buttonInside = defs[randomTermIndex];
                 break;
             }
             case 1:{
                 def2Button.setText(defs[randomTermIndex]);
                 numberOfUsedButton = 2;
-                buttonInside = defs[randomTermIndex];
                 break;
             }
             case 2:{
                 def3Button.setText(defs[randomTermIndex]);
                 numberOfUsedButton = 3;
-                buttonInside = defs[randomTermIndex];
                 break;
             }
             default:
@@ -220,7 +218,28 @@ public class GameActivity extends AppCompatActivity{
             }
 
         }
-        return buttonInside;
+        return defs[randomTermIndex];
+    }
+
+    void playRightAnswerSoung(){
+        MediaPlayer rightAnswerSoung = MediaPlayer.create(this, R.raw.right_answer_sound);
+        rightAnswerSoung.start();
+        rightAnswerSoung.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+            }
+        });
+    }
+    void playWrongAnswerSoung(){
+        MediaPlayer wrongAnswerSoung = MediaPlayer.create(this, R.raw.wrong_answer_sound);
+        wrongAnswerSoung.start();
+        wrongAnswerSoung.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+            }
+        });
     }
 
 }
