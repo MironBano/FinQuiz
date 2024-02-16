@@ -1,6 +1,11 @@
 package com.bano.finquiz;
 
+import static com.bano.finquiz.SettingsActivity.APP_PREFERENCES;
+import static com.bano.finquiz.SettingsActivity.SOUND;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
@@ -20,6 +25,7 @@ public class GameActivity extends AppCompatActivity{
     TextView termText,timeText,counterText;
     Button def1Button,def2Button,def3Button;
     GlossaryDB glossaryDB = new GlossaryDB(this);
+    SharedPreferences mSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,8 @@ public class GameActivity extends AppCompatActivity{
         def1Button = findViewById(R.id.definition1);
         def2Button = findViewById(R.id.definition2);
         def3Button = findViewById(R.id.definition3);
+        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        Boolean isSoundActive = mSettings.getBoolean(SOUND, true);
 
         Toast answerWrongToast = Toast.makeText(GameActivity.this,"Неверно", Toast.LENGTH_SHORT);
 
@@ -47,11 +55,11 @@ public class GameActivity extends AppCompatActivity{
                 if(def1Button.getText() == answer) {
                     count += 1;
                     counterText.setText("Счет: " + count);
-                    playRightAnswerSoung();
+                    if(isSoundActive) playRightAnswerSoung();
                 }
                 else {
                     anticount += 1;
-                    playWrongAnswerSoung();
+                    if(isSoundActive) playWrongAnswerSoung();
                     answerWrongToast.cancel();
                     answerWrongToast.show();
                 }
@@ -65,11 +73,11 @@ public class GameActivity extends AppCompatActivity{
                 if(def2Button.getText() == answer) {
                     count += 1;
                     counterText.setText("Счет: " + count);
-                    playRightAnswerSoung();
+                    if(isSoundActive) playRightAnswerSoung();
                 }
                 else {
                     anticount += 1;
-                    playWrongAnswerSoung();
+                    if(isSoundActive) playWrongAnswerSoung();
                     answerWrongToast.cancel();
                     answerWrongToast.show();
                 }
@@ -83,11 +91,11 @@ public class GameActivity extends AppCompatActivity{
                 if(def3Button.getText() == answer) {
                     count += 1;
                     counterText.setText("Счет: " + count);
-                    playRightAnswerSoung();
+                    if(isSoundActive) playRightAnswerSoung();
                 }
                 else {
                     anticount += 1;
-                    playWrongAnswerSoung();
+                    if(isSoundActive) playWrongAnswerSoung();
                     answerWrongToast.cancel();
                     answerWrongToast.show();
                 }
@@ -221,6 +229,7 @@ public class GameActivity extends AppCompatActivity{
         return defs[randomTermIndex];
     }
 
+    
     void playRightAnswerSoung(){
         MediaPlayer rightAnswerSoung = MediaPlayer.create(this, R.raw.right_answer_sound);
         rightAnswerSoung.start();

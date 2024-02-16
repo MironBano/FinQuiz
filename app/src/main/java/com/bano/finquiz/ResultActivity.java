@@ -29,7 +29,6 @@ public class ResultActivity extends AppCompatActivity {
         startActivity(new Intent(ResultActivity.this, MainActivity.class));
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

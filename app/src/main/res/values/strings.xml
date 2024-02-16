@@ -16,4 +16,5 @@
     <string name="resultCount">Текущий счет:</string>
     <string name="currentWinsPercent">Процент правильных ответов: \n</string>
     <string name="githubLinkText">Исходный код на GitHub:</string>
+    <string name="settings_soundswitch">Звуки в приложении\t\t\t</string>
 </resources>

@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private static long back_pressed;
-    ImageButton guideButton, settingsButton;
+    ImageButton guideButton, settingsButton, detailsButton;
     Button statisticButton, rulesButton, gameButton;
 
     @Override
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         guideButton = findViewById(R.id.guide);
         settingsButton = findViewById(R.id.settings);
+        detailsButton = findViewById(R.id.details);
         statisticButton = findViewById(R.id.statistics);
         rulesButton = findViewById(R.id.rules);
         gameButton = findViewById(R.id.start_game);
@@ -37,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
         settingsButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+            }
+        });
+
+        detailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, DetalisActivity.class));
             }
         });

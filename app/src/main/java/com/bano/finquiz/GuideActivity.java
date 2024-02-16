@@ -43,8 +43,7 @@ public class GuideActivity extends AppCompatActivity {
         }
         db.close();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,
-                android.R.layout.simple_list_item_1, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, items);
 
         guideList.setAdapter(adapter);
 
