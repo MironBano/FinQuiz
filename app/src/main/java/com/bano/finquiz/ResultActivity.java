@@ -1,9 +1,14 @@
 package com.bano.finquiz;
 
+import static com.bano.finquiz.SettingsActivity.APP_PREFERENCES;
+import static com.bano.finquiz.SettingsActivity.TIME;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -22,7 +27,7 @@ public class ResultActivity extends AppCompatActivity {
     TextView record, count, wins, warning;
     Button goBackButton;
     View goBackView;
-
+    SharedPreferences mSettings;
 
     @Override
     public void onBackPressed() {
@@ -33,6 +38,7 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
         Bundle arg = getIntent().getExtras();
         int currentCount = arg.getInt("Current count");
@@ -45,8 +51,6 @@ public class ResultActivity extends AppCompatActivity {
         count = findViewById(R.id.countText);
         wins = findViewById(R.id.winsText);
         warning = findViewById(R.id.warningText);
-
-
 
         count.setText("Текущий счет: " + currentCount);
         setWinsPercent(currentCount, currentAnticount);
@@ -72,12 +76,8 @@ public class ResultActivity extends AppCompatActivity {
                     record.setText("Рекорд: " + currentRecord);
 
                     ContentValues cv = new ContentValues();
-                    if((currentRecord < currentCount) && !checkForAbuse(percent)){
-                        cv.put(Database.COLUMN_RECORD, currentCount);
-                    }
-                    if(currentPercent < ((double) currentCount / (currentCount+currentAnticount))*100){
-                        cv.put(Database.COLUMN_PERCENT, percent);
-                    }
+                    if((currentRecord < currentCount) && !isRulesToUpdateViolated(percent)) cv.put(Database.COLUMN_RECORD, currentCount);
+                    if(currentPercent < ((double)currentCount / (currentCount+currentAnticount))*100 && !isRulesToUpdateViolated(percent)) cv.put(Database.COLUMN_PERCENT, percent);
                     cv.put(Database.COLUMN_TOTAL, currentTotal + currentCount);
                     db.update(Database.TABLE, cv, Database.COLUMN_ID + "=" + id, null);
 
@@ -104,12 +104,12 @@ public class ResultActivity extends AppCompatActivity {
             DecimalFormat df = new DecimalFormat("#.#");
 
             wins.setText("Процент правильных ответов: \n" +  df.format(percent) + "%");
-            warning.setText(checkForAbuse(percent) ? "При проценте меньше 40 рекорд не обновится!" : "");
+            warning.setText(isRulesToUpdateViolated(percent) ? "При проценте меньше 40 или времени на раунд больше 30 секунд рекорд не обновится!" : "");
         }
     }
 
-    public boolean checkForAbuse(double percent){
-        return (percent < 40) ? true : false;
+    public boolean isRulesToUpdateViolated(double percent){
+        return percent < 40 || mSettings.getFloat(TIME, 30) != 30;
     }
 
 }

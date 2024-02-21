@@ -11,8 +11,37 @@
         android:layout_height="wrap_content"
         android:text="@string/settings_soundswitch"
         android:textColor="@color/white"
+        android:textSize="20sp"
+        app:trackTint="@color/lightGray"
         android:layout_margin="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:text="@string/settingsTimeText"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sound_settings_switch" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/timeSlider"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeText"
+        app:trackHeight="15dp"
+        app:trackColorInactive="@color/lightGray"
+        app:tickVisible="false"
+        android:stepSize="30"
+        android:valueFrom="30"
+        android:valueTo="90"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

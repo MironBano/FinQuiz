@@ -2,6 +2,7 @@ package com.bano.finquiz;
 
 import static com.bano.finquiz.SettingsActivity.APP_PREFERENCES;
 import static com.bano.finquiz.SettingsActivity.SOUND;
+import static com.bano.finquiz.SettingsActivity.TIME;
 
 import android.content.Context;
 import android.content.Intent;
@@ -121,9 +122,10 @@ public class GameActivity extends AppCompatActivity{
             @Override
             public void run() {
                 try {
-                    for(int i = 0; i <30; i++) {
+                    int seconds = (int) mSettings.getFloat(TIME,30);
+                    for(int i = 0; i <seconds; i++) {
                         Thread.sleep(1000);
-                        int timeLeft = 30 - i;
+                        int timeLeft = seconds - i;
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -136,7 +138,6 @@ public class GameActivity extends AppCompatActivity{
                     intent.putExtra("Current anticount",anticount);
                     startActivity(intent);
                     finish();
-
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
